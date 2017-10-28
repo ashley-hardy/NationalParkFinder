@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <link rel='stylesheet' type="text/css" href="style.css">
+    <script type='text/javascript' src='script.js'></script>
+        <style>
+           #map {
+            height: 400px;
+            width: 100%;
+           }
+        </style>
+      </head>
+      <body>
+        <div id="map"></div>
+        <script>
+          function initMap() {
+            var options = {
+              zoom: 8,
+              center: {lat:40.0150, lng:-105.2705}
+            }
+            var map = new google.maps.Map(document.getElementById('map'), options)
+            var marker = new google.maps.Marker({
+              position: {lat:40.0150, lng:-105.2705},
+              map:map,
+            })
+            var infoWindow = new google.maps.InfoWindow({
+              content: '<h1>Boulder, CO</h1>'
+            })
+
+            marker.addListener('click', function(){
+              infoWindow.open(map, marker)
+            })
+          }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5kgo3gARQkh0UHJDKx4tENYpgJl6-EPs&callback=initMap">
+        </script>
+      </body>
+    </html>
