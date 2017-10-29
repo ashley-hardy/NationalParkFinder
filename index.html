@@ -16,63 +16,49 @@
       </head>
       <body>
         <div id="map"></div>
+        <input type="text" name="search" placeholder="Search..">
         <script>
-        var markers = []
-        let $xhr = $.ajax ({
-          url: 'https://developer.nps.gov/api/v1/parks?api_key=uRy7DBPiQRPP86xvn1XwEtfKNl9CQxVEEqkAKbSr',
-          type: 'GET',
-          dataType: 'json',
-          success: function(data) {
-            console.log(data.data[0].latLong)
-            for (let i = 0; i < data.data.length; i++) {
-              if (data.data[i].latLong === '') {
-              } else {
-              var latLongStr = data.data[i].latLong
-              // console.log(latLongStr)
-              var lat = latLongStr.slice(4, 13)
-              var lng = latLongStr.slice(22, 30)
-              var latLongObj = {}
-              latLongObj.lat = parseFloat(lat)
-              latLongObj.lng = parseFloat(lng)
-              markers.push(latLongObj)
-              }
-            }
-          },
-          error: function() {alert('failed')},
-          // beforeSend: setHeader,
-        })
+        // var markers = []
+        // let $xhr = $.ajax ({
+        //   url: 'https://developer.nps.gov/api/v1/parks?api_key=uRy7DBPiQRPP86xvn1XwEtfKNl9CQxVEEqkAKbSr',
+        //   type: 'GET',
+        //   dataType: 'json',
+        //   success: function(data) {
+        //     for (let i = 0; i < data.data.length; i++) {
+        //       if (data.data[i].latLong === '') {
+        //       } else {
+        //       var latLongStr = data.data[i].latLong
+        //       var lat = latLongStr.slice(4, 13)
+        //       var lng = latLongStr.slice(22, 30)
+        //       var latLongObj = {}
+        //       latLongObj.lat = parseFloat(lat)
+        //       latLongObj.lng = parseFloat(lng)
+        //       markers.push(latLongObj)
+        //       }
+        //     }
+        //   },
+        //   error: function() {alert('failed')},
+        // })
 
-        // function setHeader(xhr) {
-        //   xhr.setRequestHeader('Authorization', 'uRy7DBPiQRPP86xvn1XwEtfKNl9CQxVEEqkAKbSr')
+        // function initMap() {
+        //   var options = {
+        //     zoom: 8,
+        //     center: {lat:40.0150, lng:-105.2705}
+        //   }
+        //
+        //   var map = new google.maps.Map(document.getElementById('map'), options)
+        //
+        //   function addMarker(coords){
+        //     var marker = new google.maps.Marker({
+        //       position: coords,
+        //       map:map,
+        //     })
+        //   }
+        //   console.log('markers', markers)
+        //   for (let i = 0; i < markers.length; i++) {
+        //     addMarker(markers[i])
+        //   }
         // }
-        function initMap() {
-          var options = {
-            zoom: 8,
-            center: {lat:40.0150, lng:-105.2705}
-          }
-
-          var map = new google.maps.Map(document.getElementById('map'), options)
-
-          function addMarker(coords){
-            var marker = new google.maps.Marker({
-              position: coords,
-              map:map,
-            })
-            // var infoWindow = new google.maps.InfoWindow({
-            //   content: '<h1>Boulder, CO</h1>'
-            // })
-            //
-            // marker.addListener('click', function(){
-            //   infoWindow.open(map, marker)
-            // })
-          }
-          addMarker({lat:40.0150, lng:-105.2705})
-          console.log('markers', markers)
-          for (var i = 0; i < markers.length; i++) {
-            console.log(markers[i])
-            addMarker(markers[i])
-          }
-        }
         </script>
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5kgo3gARQkh0UHJDKx4tENYpgJl6-EPs&callback=initMap">
