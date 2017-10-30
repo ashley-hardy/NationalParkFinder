@@ -8,12 +8,14 @@ function initMap() {
 }
 
 $(document).ready(function(){
+    $('.parallax').parallax();
   let $xhr = $.ajax ({
     url: 'https://developer.nps.gov/api/v1/parks?api_key=uRy7DBPiQRPP86xvn1XwEtfKNl9CQxVEEqkAKbSr',
     type: 'GET',
     dataType: 'json',
     success: function(data) {
       var markers = []
+      console.log(data.data)
       for (let i = 0; i < data.data.length; i++) {
         if (data.data[i].latLong === '') {
         } else {
@@ -40,21 +42,12 @@ $(document).ready(function(){
     },
     error: function() {alert('failed')},
   })
+  $( window ).bind('mousewheel', function( ev ){
+    ev.preventDefault();
+    var $window = $(window),
+        scrollIncrement = ev.originalEvent.deltaY/1,
+        scrollPos = $window.scrollTop(),
+        newPos = scrollPos+scrollIncrement;
+    $window.scrollTop( newPos );
+} );
 })
-
-//   let $xhr = $.ajax ({
-//     url: 'https://developer.nps.gov/api/v0/parks',
-//     type: 'GET',
-//     dataType: 'json',
-//     success: function(data) {
-//       // console.log(data)
-//       // map.data.loadGeoJson('data')
-//     },
-//     error: function() {alert('failed')},
-//     beforeSend: setHeader,
-//   })
-// })
-//
-// function setHeader(xhr) {
-//   xhr.setRequestHeader('Authorization', '22A19C65-2E7C-4BB9-9806-0A0C2397540A')
-// }
