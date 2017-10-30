@@ -10,59 +10,68 @@ function initMap() {
         center: {lat:40.0150, lng:-105.2705}
       }
       var map = new google.maps.Map(document.getElementById('map'), options)
-
       var image = 'mutcd-campground-guide-sign-hiking-trail-x-rs-068.png'
-      for (let i = 0; i < data.data.length; i++) {
-        var contentString = '<h3 id="firstHeading" class="firstHeading">' + data.data[i].name + '</h3>'
-        var infowindow = new google.maps.InfoWindow({
-         content: contentString
-        })
 
-        if (data.data[i].latLong === '') {
-        } else if (data.data[i].latLong.length === 34) {
-          var latLongStr = data.data[i].latLong
+      for (let i = 0; i < data.data.length; i++) {
+        createMarker(data.data[i])
+      } // end of for loop
+      function createMarker(i) {
+        if (i.latLong === '') {
+          return
+        } else if (i.latLong.length === 34) {
+          var latLongStr = i.latLong
           var lat = latLongStr.slice(4, 15)
           var lng = latLongStr.slice(22, 34)
           var latLng = new google.maps.LatLng(lat, lng)
           var marker = new google.maps.Marker({
             position: latLng,
-            icon: image
+            map: map,
+            icon: 'mutcd-campground-guide-sign-hiking-trail-x-rs-068.png'
           })
-          marker.setMap(map)
-          marker.addListener('click', function() {
-          infowindow.open(map, marker)
+          var infoWindow = new google.maps.InfoWindow({
+            content: '<h5>' + i.name + '</h5><br><p><strong>About: </strong>' + i.description + "</p><p><strong>More info: </strong></p><a href ='" + i.url + "'></a>"
           })
 
-        } else if (data.data[i].latLong.length === 30) {
-          var latLongStr = data.data[i].latLong
-          var lat = latLongStr.slice(4, 13)
-          var lng = latLongStr.slice(20, 30)
-          var latLng = new google.maps.LatLng(lat, lng)
-          var marker = new google.maps.Marker({
-            position: latLng,
-            icon: image
-          })
           marker.setMap(map)
-
-        } else if (data.data[i].latLong.length === 33) {
-          var latLongStr = data.data[i].latLong
-          var lat = latLongStr.slice(4, 15)
-          var extLong = latLongStr.slice(21, 33)
-          for (let i = 0; i < lng.length; i++) {
-            lng = extLong.replace(/:/g, '')
-          }
-          var latLng = new google.maps.LatLng(lat, lng)
-          var marker = new google.maps.Marker({
-            position: latLng,
-            icon: image
+          google.maps.event.addListener(marker, 'click', function () {
+              infoWindow.open(map, marker)
           })
-          marker.setMap(map)
         }
+        // else if (data.data[i].latLong.length === 30) {
+        //   var latLongStr = data.data[i].latLong
+        //   var lat = latLongStr.slice(4, 13)
+        //   var lng = latLongStr.slice(20, 30)
+        //   var latLng = new google.maps.LatLng(lat, lng)
+        //   var marker = new google.maps.Marker({
+        //     position: latLng,
+        //     icon: image
+        //   })
+        //   marker.setMap(map)
+        //
+        // } else if (data.data[i].latLong.length === 33) {
+        //   var latLongStr = data.data[i].latLong
+        //   var lat = latLongStr.slice(4, 15)
+        //   var extLong = latLongStr.slice(21, 33)
+        //   for (let i = 0; i < lng.length; i++) {
+        //     lng = extLong.replace(/:/g, '')
+        //   }
+          // var latLng = new google.maps.LatLng(lat, lng)
+          // var marker = new google.maps.Marker({
+          //   position: {lat: parseFloat(lat), lng: parseFloat(lng)},
+          //   icon: image
+          // })
+          // marker.setMap(map)
+        // }
 
-      } // end of for loop
+      }
+      // $('#map').on('click', function (event) {
+      //   console.log(marker)
+      //   infoWindow.open(map, marker)
+      // })
     },// end of success
     error: function() {alert('failed')},
   })// end of ajax
+
 
 $( window ).bind('mousewheel', function( ev ){
   ev.preventDefault();
