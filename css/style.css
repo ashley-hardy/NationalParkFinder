@@ -3,6 +3,10 @@ nav .brand-logo {
   color: #444;
 }
 
+/*.favorites-body {
+  background-image: url(kc-luk-188412.jpg)
+}*/
+
 p {
   line-height: 2rem;
 }
@@ -11,29 +15,27 @@ p {
   color: #26a69a;
 }
 
-.header-container {
-  padding: 8%;
-}
 .parallax img {
   width: 100vw;
 }
 
 .parallax-container {
-  min-height: 430px;
-  /*still broken? change min height to 380px*/
+  min-height: 380px;
   max-height: 500px;
   line-height: 0;
   height: auto;
   color: rgba(255,255,255,.9);
 }
+
   .parallax-container .section {
     width: 100%;
   }
+
   #map {
-   height: 400px;
+   height: 700px;
    width: 100%;
   }
-  
+
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
@@ -55,6 +57,17 @@ p {
 }
 .icon-block .material-icons {
   font-size: inherit;
+}
+
+.park-photo {
+  height: auto;
+  width: 500px;
+  max-width: 440px;
+  max-height: 440px;
+}
+
+.favorites-button {
+  margin-top: 5px;
 }
 
 footer.page-footer {
