@@ -6,11 +6,9 @@ $(document).ready(function() {
   }
 
   $('.remove').on('click', function() {
-    var tableBody = $('tbody')[0]
-    var tableRow = $('tr')[0]
+    var tableRow = $('tr')[1]
     tableRow.parentElement.removeChild(tableRow)
-
-    // localStorage.removeItem(key, localStorage[key])
+    localStorage.removeItem(key, localStorage[key])
   })
 
 })
