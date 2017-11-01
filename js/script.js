@@ -1,6 +1,16 @@
 function initMap() {
 }
 
+function latitude(string, num1, num2) {
+  lat = string.slice(num1, num2)
+  return lat
+}
+
+function longitude(string, num1, num2) {
+  lng = string.slice(num1, num2)
+  return lng
+}
+
   let $xhr = $.ajax ({
     url: 'https://developer.nps.gov/api/v1/parks?limit=519&q=national%20park&fields=images&api_key=uRy7DBPiQRPP86xvn1XwEtfKNl9CQxVEEqkAKbSr',
     type: 'GET',
@@ -53,13 +63,13 @@ function initMap() {
           return
         } else if (i.latLong.length === 34) {
           var latLongStr = i.latLong
-          var lat = latLongStr.slice(4, 15)
-          var lng = latLongStr.slice(22, 34)
+          lat = latitude(latLongStr, 4, 15)
+          lng = longitude(latLongStr, 22, 34)
           addWindow()
         } else if (i.latLong.length === 30) {
           var latLongStr = i.latLong
-          var lat = latLongStr.slice(4, 13)
-          var lng = latLongStr.slice(20, 30)
+          lat = latitude(latLongStr, 4, 13)
+          lng = longitude(latLongStr, 20, 30)
           addWindow()
         // } else if (i.latLong.length === 33) {
         //   var latLongStr = i.latLong
@@ -98,5 +108,4 @@ $(window).bind('mousewheel', function(ev){
 
 $(document).ready(function(){
     $('.parallax').parallax()
-
 })
