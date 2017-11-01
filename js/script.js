@@ -11,9 +11,6 @@ function initMap() {
         center: {lat:40.0150, lng:-105.2705}
       }
       var map = new google.maps.Map(document.getElementById('map'), options)
-      var image = 'mutcd-campground-guide-sign-hiking-trail-x-rs-068.png'
-
-      console.log(data.data)
 
       for (let i = 0; i < data.data.length; i++) {
         createMarker(data.data[i])
@@ -26,7 +23,7 @@ function initMap() {
           var marker = new google.maps.Marker({
             position: latLng,
             map: map,
-            icon: 'mutcd-campground-guide-sign-hiking-trail-x-rs-068.png'
+            icon: 'Img/HikingIcon.png'
           })
 
             var infoWindow = new google.maps.InfoWindow({
@@ -90,13 +87,13 @@ function initMap() {
     error: function() {alert('failed')},
   })
 
-$( window ).bind('mousewheel', function( ev ){
+$(window).bind('mousewheel', function(ev){
   ev.preventDefault()
   var $window = $(window),
     scrollIncrement = ev.originalEvent.deltaY/1,
     scrollPos = $window.scrollTop(),
     newPos = scrollPos + scrollIncrement
-  $window.scrollTop( newPos )
+  $window.scrollTop(newPos)
 })
 
 $(document).ready(function(){
