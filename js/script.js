@@ -13,6 +13,8 @@ function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), options)
       var image = 'mutcd-campground-guide-sign-hiking-trail-x-rs-068.png'
 
+      console.log(data.data)
+
       for (let i = 0; i < data.data.length; i++) {
         createMarker(data.data[i])
       }
@@ -28,7 +30,7 @@ function initMap() {
           })
 
             var infoWindow = new google.maps.InfoWindow({
-              content: "<img class='park-photo' src = '" + i.images[0].url + "'><h5>" + i.name + '</h5><br><p><strong>About: </strong>' + i.description + "</p><p><strong>More info: </strong>" + "<a target='blank' href=" + i.url + " >" + i.url + "</a><br><button class='favorites-button' type='button'><strong>Add to Favorites</strong></button>"
+              content: "<img class='park-photo' src = '" + i.images[0].url + "'><h5>" + i.fullName + '</h5><br><p><strong>About: </strong>' + i.description + "</p><p><strong>More info: </strong>" + "<a target='blank' href=" + i.url + " >" + i.url + "</a><br><button class='favorites-button waves-effect waves-light btn' type='button'><strong>Add to Favorites</strong></button>"
             })
             marker.setMap(map)
 
@@ -45,7 +47,7 @@ function initMap() {
                 marker.open = false
               })
               $('.favorites-button').on('click', function() {
-                localStorage.setItem(i.name, i.url)
+                localStorage.setItem(i.fullName, i.url)
               })
             })
           }
