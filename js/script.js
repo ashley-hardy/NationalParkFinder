@@ -24,6 +24,7 @@ function longitude(string, num1, num2) {
 
       for (let i = 0; i < data.data.length; i++) {
         createMarker(data.data[i])
+        console.log(data.data[i])
       }
 
       function createMarker(i) {
@@ -71,26 +72,6 @@ function longitude(string, num1, num2) {
           lat = latitude(latLongStr, 4, 13)
           lng = longitude(latLongStr, 20, 30)
           addWindow()
-        // } else if (i.latLong.length === 33) {
-        //   var latLongStr = i.latLong
-        //   var lat = latLongStr.slice(4, 15)
-        //   var lng = latLongStr.slice(21, 33)
-        //   for (var i = 0; i < lng.length; i++) {
-        //     if (lng[i] === ':') {
-        //       lng = lng.replace(/:/g, '')
-        //     }
-        //   }
-        //   addWindow()
-        // } else if (i.latLong.length === 32) {
-        //   var latLongStr = i.latLong
-        //   var lat = latLongStr.slice(4, 13)
-        //   var lng = latLongStr.slice(21, 33)
-        //   for (var i = 0; i < lng.length; i++) {
-        //     if (lng[i] === ':') {
-        //       lng = lng.replace(/:/g, '')
-        //     }
-        //   }
-        //   addWindow()
         }
       }
     },
