@@ -24,7 +24,6 @@ function longitude(string, num1, num2) {
 
       for (let i = 0; i < data.data.length; i++) {
         createMarker(data.data[i])
-        console.log(data.data[i])
       }
 
       function createMarker(i) {

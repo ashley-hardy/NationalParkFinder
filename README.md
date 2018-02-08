@@ -6,7 +6,7 @@
 
 User can browse around the interactive Google Map to find National Parks within the US. By clicking on a pin, the user can find out park information, view a a photo, and decide to add the park to their favorites.
 
-![alt text](Img/HomePage.png)
+![alt text](Img/Map.png)
 
 User can view their favorite parks. To remove the park from their list, user can click the 'remove' button.
 
