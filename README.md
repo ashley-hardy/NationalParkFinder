@@ -4,7 +4,7 @@
 
 ![alt text](Img/Splash.png)
 
-User can browse around the interactive Google Map to find National Parks within the US. By clicking on a pin, the user can find out park information, view a a photo, and add the park to their favorites list.
+User can browse around the interactive Google Map to find National Parks within the US. By clicking on a pin, the user can read park information, view an image, and add the park to their favorites list.
 
 ![alt text](Img/Map.png)
 
