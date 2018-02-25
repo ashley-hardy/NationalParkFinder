@@ -1,6 +1,6 @@
 # National Park Finder
 
-[National Park Finder](http://park-finder.surge.sh/) allows users to interactively explore National Parks within the US and add them to a 'favorites' list. To discover areas, a user can click on the map pins to read about the area, add the park to their favorites list, or navigate to the corresponding National Park Service website. Data is rendered from both the Google Maps API and National Park Finder APi.
+[National Park Finder](http://park-finder.surge.sh/) allows users to interactively explore National Parks within the US and add them to a 'favorites' list. To discover areas, a user can click on the map pins to read about the area, add the park to their favorites list, or navigate to the corresponding National Park Service website. Data is rendered from both the Google Maps API and National Park Service API.
 
 ![alt text](Img/Splash.png)
 
